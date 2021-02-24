@@ -120,7 +120,7 @@ graph_4_bfs_sequence    = [0, 1, 2, 5, 3, 4]
 graph_4_ids_sequence    = [0, 1, 2, 5, 0, 1, 2, 3, 4]
 
 # We can markedly speed up the get_value() function by preloading data
-x_train, _, y_train, _ = train_test_split(
+x_train, x_test, y_train, y_test = train_test_split(
         np.hstack([load_iris().data, np.ones((150,1))]),
         load_iris().target,
         random_state=1701,
@@ -130,6 +130,13 @@ def get_value(state):
     """Returns the value of [state]"""
     w = np.reshape(state, (5,3))
     x,y = x_train, y_train
+    fx = np.matmul(x, w)
+    return np.sum(np.argmax(fx, axis=1) == y) / len(y)
+    
+def value_test(state):
+    """Returns the value of [state] using TEST data."""
+    w = np.reshape(state, (5,3))
+    x,y = x_test, y_test
     fx = np.matmul(x, w)
     return np.sum(np.argmax(fx, axis=1) == y) / len(y)
 
