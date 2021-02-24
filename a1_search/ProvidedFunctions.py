@@ -81,39 +81,39 @@ def show(graph):
     graph = to_networkx(graph)
     nx.drawing.nx_agraph.graphviz_layout(graph)
     plt.show()
-
-graph_test_2 = Node(0, 0, [
-    Node(1, 1, [
-        Node(8, 8, [
-            Node(9, 9, []),
-            Node(10, 10, []),
-        ]),
-        Node(12, 12, [
-            Node(13, 13, [
-                Node(14, 14, []),
-                Node(15, 15, []),
-            ])
-        ]),
-        Node(16, 16, [
-            Node(17, 17, [
-                Node(18, 18, [
-                    Node(19, 19, [])
-                ])
-            ])
-        ])
-    ]),
-    Node(2, 2, [
-        Node(4, 4, []),
-        Node(5, 5, [
-            Node(6, 6, []),
-            Node(7, 7, [])
-        ])
-    ]),
-    Node(3, 3, []),
-    Node(11, 11, []),
-])
-
-show(graph_test_2)
+# 
+# graph_test_2 = Node(0, 0, [
+#     Node(1, 1, [
+#         Node(8, 8, [
+#             Node(9, 9, []),
+#             Node(10, 10, []),
+#         ]),
+#         Node(12, 12, [
+#             Node(13, 13, [
+#                 Node(14, 14, []),
+#                 Node(15, 15, []),
+#             ])
+#         ]),
+#         Node(16, 16, [
+#             Node(17, 17, [
+#                 Node(18, 18, [
+#                     Node(19, 19, [])
+#                 ])
+#             ])
+#         ])
+#     ]),
+#     Node(2, 2, [
+#         Node(4, 4, []),
+#         Node(5, 5, [
+#             Node(6, 6, []),
+#             Node(7, 7, [])
+#         ])
+#     ]),
+#     Node(3, 3, []),
+#     Node(11, 11, []),
+# ])
+#
+# show(graph_test_2)
 
 
 
