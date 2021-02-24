@@ -64,7 +64,9 @@ class Node:
     
 graph_3 = Node(0, 0, [
     Node(1, 1, []),
-    Node(2, 2, [])
+    Node(2, 2, [
+        Node(3, 3, []),
+        Node(4, 4, [])])
 ])
 
 # We can markedly speed up the get_value() function by preloading data
