@@ -133,7 +133,7 @@ def get_value(state):
     fx = np.matmul(x, w)
     return np.sum(np.argmax(fx, axis=1) == y) / len(y)
 
-def get_successor(state, n_successors=100):
+def get_successor(state, n_successors=10):
     """Returns [n_successors] successor states to [state].
     
     The idea is to bias sampling in the direction opposite the gradient of the
@@ -148,7 +148,7 @@ def get_successor(state, n_successors=100):
     
     grad = w.grad.numpy().reshape(15)
     grad_norm = np.linalg.norm(grad)
-    return [state - grad + (np.random.rand(15) * grad_norm / 2) for _ in range(n_successors)]
+    return [state - grad + (np.random.rand(15) * grad_norm) for _ in range(n_successors)]
 
 def get_initial_state():
     """Returns an initial state."""
