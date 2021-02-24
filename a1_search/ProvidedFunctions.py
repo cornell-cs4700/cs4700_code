@@ -172,7 +172,7 @@ def get_initial_population(size=100, seed=0):
     optimize for a specific seed.
     """
     np.random.seed(seed)
-    random.seed(seed)
+    # random.seed(seed)
     return [np.random.rand(15) for _ in range(size)]
     
     
