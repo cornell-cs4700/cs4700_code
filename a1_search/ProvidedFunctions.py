@@ -61,6 +61,11 @@ class Node:
         return str_(self)
         
     def __eq__(self, other): return str(self) == str(other)
+    
+graph_3 = Node(0, 0, [
+    Node(1, 1, []),
+    Node(2, 2, [])
+])
 
 # We can markedly speed up the get_value() function by preloading data
 x_train, _, y_train, _ = train_test_split(
