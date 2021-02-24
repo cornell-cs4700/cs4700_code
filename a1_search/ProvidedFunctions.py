@@ -85,7 +85,6 @@ graph_1_bfs_sequence    = [0, 1, 2, 5, 3, 4]
 graph_1_ids_sequence    = [0, 0, 1, 2, 5, 0, 1, 2, 3, 4]
 
 graph_2 = Node(0, 42, [])
-])
 graph_2_value           = 30
 graph_2_bfs_id          = None
 graph_2_ids_id          = None
