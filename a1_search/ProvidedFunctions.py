@@ -139,6 +139,23 @@ def value_test(state):
     x,y = x_test, y_test
     fx = np.matmul(x, w)
     return np.sum(np.argmax(fx, axis=1) == y) / len(y)
+    
+def get_successor_test(state, n_successors=10):
+    """Returns [n_successors] successor states to [state].
+    
+    The idea is to bias sampling in the direction opposite the gradient of the
+    cross-entropy loss of [state].
+    """
+    loss_fn = CrossEntropyLoss()
+    x,y = torch.tensor(x_test), torch.tensor(y_test)
+    w = torch.tensor(np.reshape(state, (5,3)), requires_grad=True)
+    fx = torch.matmul(x, w)
+    loss = loss_fn(fx, y)
+    loss.backward()
+    
+    grad = w.grad.numpy().reshape(15)
+    grad_norm = np.linalg.norm(grad)
+    return [state - grad + (np.random.rand(15) * grad_norm) for _ in range(n_successors)]
 
 def get_successor(state, n_successors=10):
     """Returns [n_successors] successor states to [state].
