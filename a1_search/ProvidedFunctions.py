@@ -70,6 +70,28 @@ class Node:
         
     def __eq__(self, other): return str_(self) == str(other)
     
+graph_1 = Node(0, 0, [
+    Node(1, 1, []),
+    Node(2, 2, [
+        Node(3, 3, []),
+        Node(4, 4, [])
+    ]),
+    Node(5, 5, [])
+])
+graph_1_value           = 4
+graph_1_bfs_id          = 4
+graph_1_ids_id          = 4
+graph_1_bfs_sequence    = [0, 1, 2, 5, 3, 4]
+graph_1_ids_sequence    = [0, 0, 1, 2, 5, 0, 1, 2, 3, 4]
+
+graph_2 = Node(0, 42, [])
+])
+graph_2_value           = 30
+graph_2_bfs_id          = None
+graph_2_ids_id          = None
+graph_2_bfs_sequence    = [0]
+graph_2_ids_sequence    = [0]
+
 graph_3 = Node(0, 0, [
     Node(1, 1, []),
     Node(2, 2, [
@@ -78,8 +100,25 @@ graph_3 = Node(0, 0, [
     ]),
     Node(5, 5, [])
 ])
+graph_3_value           = 4
+graph_3_bfs_id          = 4
+graph_3_ids_id          = 4
+graph_3_bfs_sequence    = [0, 1, 2, 5, 3, 4]
+graph_3_ids_sequence    = [0, 0, 1, 2, 5, 0, 1, 2, 3, 4]
 
-print(graph_3)
+graph_4 = Node(0, 0, [
+    Node(1, 1, []),
+    Node(2, 2, [
+        Node(3, 3, []),
+        Node(4, 4, [])
+    ]),
+    Node(5, 5, [])
+])
+graph_4_value           = 4
+graph_4_bfs_id          = 4
+graph_4_ids_id          = 4
+graph_4_bfs_sequence    = [0, 1, 2, 5, 3, 4]
+graph_4_ids_sequence    = [0, 0, 1, 2, 5, 0, 1, 2, 3, 4]
 
 # We can markedly speed up the get_value() function by preloading data
 x_train, _, y_train, _ = train_test_split(
