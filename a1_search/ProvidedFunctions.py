@@ -13,6 +13,22 @@ from torch.nn import CrossEntropyLoss
 def compare_output_test(test_vals, result):
     pass
 
+def str_(node, indent="", depth=10, root=False, last=False):
+    """Returns a string representation of [node]."""
+    if depth == 0:
+        return f"{indent}├───[{node.id}: {node.value}]"
+    elif root:
+        child_strs = "".join([str_(c, indent=indent + " " * (1+len(str(node.id))), depth=depth-1, last=i+1==len(node.children))
+                                            for i,c in enumerate(node.children)])
+        return f"[{node.id}: {node.value}]\n{child_strs}"
+    elif last:
+        child_strs = "".join([str_(c, indent=indent + "│     ", depth=depth-1, last=i+1==len(node.children))
+                                            for i,c in enumerate(node.children)])
+        return f"{indent}└───[{node.id}: {node.value}]\n{child_strs}"
+    else:
+        child_strs = "".join([str_(c, indent=indent + "│     ", depth=depth-1, last=i+1==len(node.children))
+                                            for i,c in enumerate(node.children)])
+        return f"{indent}├───[{node.id}: {node.value}]\n{child_strs}"
 class Node:
     """A basic implementation of a Node class that will hopefully help in
     debugging. Because it's not infinite, you have to construct the entire graph
@@ -48,26 +64,20 @@ class Node:
 
     def __repr__(self): return self.__str__()
 
-    def __str__(self):
+    def __str__(self): return str_(self, root=True)
         
-        def str_(node, indent="", depth=10):
-            """Returns a string representation of [node]."""
-            if depth == 0:
-                return f"{indent}----{node.id}: {node.value}"
-            else:
-                child_strs = "".join([str_(c, indent=indent + "    |", depth=depth-1) for c in node.children])
-                return f"{indent}----{node.id}: {node.value}\n{child_strs}"
-
-        return str_(self)
-        
-    def __eq__(self, other): return str(self) == str(other)
+    def __eq__(self, other): return str_(self) == str(other)
     
 graph_3 = Node(0, 0, [
     Node(1, 1, []),
     Node(2, 2, [
         Node(3, 3, []),
-        Node(4, 4, [])])
+        Node(4, 4, [])
+    ]),
+    Node(5, 5, [])
 ])
+
+print(graph_3)
 
 # We can markedly speed up the get_value() function by preloading data
 x_train, _, y_train, _ = train_test_split(
