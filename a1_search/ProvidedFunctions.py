@@ -13,10 +13,12 @@ from torch.nn import CrossEntropyLoss
 def compare_output_test(test_vals, result):
     pass
 
-def str_(node, indent="", depth=10, root=False, last=False):
+def str_(node, indent="", depth=2, root=False, last=False):
     """Returns a string representation of [node]."""
-    if depth == 0:
-        return f"{indent}├───[{node.id}: {node.value}]"
+    if depth == 0 and not last:
+        return f"{indent}├───[{node.id}: {node.value}]\n"
+    elif depth == 0 and last:
+        return f"{indent}└───[{node.id}: {node.value}]\n"
     elif root:
         child_strs = "".join([str_(c, indent=indent + " " * (1+len(str(node.id))), depth=depth-1, last=i+1==len(node.children))
                                             for i,c in enumerate(node.children)])
