@@ -1,11 +1,17 @@
 """Functions provided to students. Their implementation should be hidden by
 providing only compiled versions.
 """
+import matplotlib.pyplot as plt
+import networkx as nx
 import numpy as np
+import pygraphviz
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 import torch
 from torch.nn import CrossEntropyLoss
+
+def compare_output_test(test_vals, result):
+    pass
 
 class Node:
     """A basic implementation of a Node class that will hopefully help in
@@ -53,6 +59,75 @@ class Node:
                 return f"{indent}{node.id} - {node.value}\n{child_strs}"
 
         return str_(self)
+        
+    def __eq__(self, other): return str(self) == str(other)
+
+
+def to_networkx(node, graph=None, parent_id=None, depth=10):
+    """...."""
+    if depth > 0:
+        graph = nx.Graph() if graph is None else graph
+        graph.add_node(node.id)
+        if parent_id is not None:
+            graph.add_edge(parent_id, node.id)
+
+        for c in node.children:
+            to_networkx(c, graph=graph, parent_id=node.id, depth=depth-1)
+
+        return graph
+
+def show(graph):
+    graph = to_networkx(graph)
+    nx.drawing.nx_agraph.graphviz_layout(graph)
+    plt.show()
+
+graph_test_2 = Node(0, 0, [
+    Node(1, 1, [
+        Node(8, 8, [
+            Node(9, 9, []),
+            Node(10, 10, []),
+        ]),
+        Node(12, 12, [
+            Node(13, 13, [
+                Node(14, 14, []),
+                Node(15, 15, []),
+            ])
+        ]),
+        Node(16, 16, [
+            Node(17, 17, [
+                Node(18, 18, [
+                    Node(19, 19, [])
+                ])
+            ])
+        ])
+    ]),
+    Node(2, 2, [
+        Node(4, 4, []),
+        Node(5, 5, [
+            Node(6, 6, []),
+            Node(7, 7, [])
+        ])
+    ]),
+    Node(3, 3, []),
+    Node(11, 11, []),
+])
+
+show(graph_test_2)
+
+
+
+graph_1 = Node(0, 0, [])
+# Catches issues with cycles
+value_3, id_3 = 4, 4
+n2 = Node(2, 2, [])
+graph_test_3 = Node(0, 0, [
+    Node(2, 2, []),
+    n2,
+    Node(3, 3, [
+        Node(4, 4, [])
+    ]),
+])
+n2.children = [graph_test_3]
 
 # We can markedly speed up the get_value() function by preloading data
 x_train, _, y_train, _ = train_test_split(
