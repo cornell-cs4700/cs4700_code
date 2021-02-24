@@ -53,10 +53,10 @@ class Node:
         def str_(node, indent="", depth=10):
             """Returns a string representation of [node]."""
             if depth == 0:
-                return f"{indent}{node.id} - {node.value}"
+                return f"{indent}|--{node.id}: {node.value}"
             else:
                 child_strs = "".join([str_(c, indent=indent + "    ", depth=depth-1) for c in node.children])
-                return f"{indent}{node.id} - {node.value}\n{child_strs}"
+                return f"{indent}|--{node.id}: {node.value}\n{child_strs}"
 
         return str_(self)
         
