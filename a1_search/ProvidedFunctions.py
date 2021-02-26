@@ -91,7 +91,7 @@ graph_2_ids_id          = None
 graph_2_bfs_sequence    = [0]
 graph_2_ids_sequence    = [0]
 
-graph_test_3 = Node(0, 0, [
+graph_3 = Node(0, 0, [
     Node(1, 1, [
         Node(8, 8, [
             Node(9, 9, []),
