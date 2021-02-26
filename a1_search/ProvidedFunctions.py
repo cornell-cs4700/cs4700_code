@@ -91,33 +91,47 @@ graph_2_ids_id          = None
 graph_2_bfs_sequence    = [0]
 graph_2_ids_sequence    = [0]
 
-graph_3 = Node(0, 0, [
-    Node(1, 1, []),
-    Node(2, 2, [
-        Node(3, 3, []),
-        Node(4, 4, [])
+graph_test_3 = Node(0, 0, [
+    Node(1, 1, [
+        Node(8, 8, [
+            Node(9, 9, []),
+            Node(10, 10, []),
+        ]),
+        Node(12, 12, [
+            Node(13, 13, [
+                Node(14, 14, []),
+                Node(15, 15, []),
+            ])
+        ]),
+        Node(16, 16, [
+            Node(17, 17, [
+                Node(18, 18, [
+                    Node(19, 19, [])
+                ])
+            ])
+        ])
     ]),
-    Node(5, 5, [])
-])
-graph_3_value           = 4
-graph_3_bfs_id          = 4
-graph_3_ids_id          = 4
-graph_3_bfs_sequence    = [0, 1, 2, 5, 3, 4]
-graph_3_ids_sequence    = [0, 1, 2, 5, 0, 1, 2, 3, 4]
-
-graph_4 = Node(0, 0, [
-    Node(1, 1, []),
     Node(2, 2, [
-        Node(3, 3, []),
-        Node(4, 4, [])
+        Node(4, 4, []),
+        Node(5, 5, [
+            Node(6, 6, []),
+            Node(7, 7, [])
+        ])
     ]),
-    Node(5, 5, [])
+    Node(3, 3, []),
+    Node(11, 11, []),
 ])
-graph_4_value           = 4
-graph_4_bfs_id          = 4
-graph_4_ids_id          = 4
-graph_4_bfs_sequence    = [0, 1, 2, 5, 3, 4]
-graph_4_ids_sequence    = [0, 1, 2, 5, 0, 1, 2, 3, 4]
+graph_3_value           = 19
+graph_3_bfs_id          = 19
+graph_3_ids_id          = 19
+graph_3_bfs_sequence    = [0, 1, 2, 3, 11, 8, 12, 16, 4, 5, 9, 10, 13, 17, 6, 7, 14, 15, 18, 19]
+graph_3_ids_sequence    = [
+    0, 1, 2, 3,
+    0, 1, 8, 12, 16, 2, 4, 5, 3, 11,
+    0, 1, 8, 9, 10, 12, 13, 16, 17, 2, 4, 5, 6, 7, 3, 11,
+    0, 1, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 2, 4, 5, 6, 7, 3, 11,
+    0, 1, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19
+]
 
 # We can markedly speed up the get_value() function by preloading data
 x_train, _, y_train, _ = train_test_split(
