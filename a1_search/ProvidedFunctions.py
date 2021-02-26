@@ -13,24 +13,25 @@ from torch.nn import CrossEntropyLoss
 def compare_output_test(test_vals, result):
     pass
 
-def str_(node, indent="", depth=2, root=False, last=False):
+def print_node(node, indent="", depth=10, root=False, last=False):
     """Returns a string representation of [node]."""
     if depth == 0 and not last:
         return f"{indent}├───[{node.id}: {node.value}]\n"
     elif depth == 0 and last:
         return f"{indent}└───[{node.id}: {node.value}]\n"
     elif root:
-        child_strs = "".join([str_(c, indent=indent + " " * (1+len(str(node.id))), depth=depth-1, last=i+1==len(node.children))
+        child_strs = "".join([print_node(c, indent=indent + " " * (1+len(str(node.id))), depth=depth-1, last=i+1==len(node.children))
                                             for i,c in enumerate(node.children)])
         return f"[{node.id}: {node.value}]\n{child_strs}"
     elif last:
-        child_strs = "".join([str_(c, indent=indent + "│     ", depth=depth-1, last=i+1==len(node.children))
+        child_strs = "".join([print_node(c, indent=indent + "│     ", depth=depth-1, last=i+1==len(node.children))
                                             for i,c in enumerate(node.children)])
         return f"{indent}└───[{node.id}: {node.value}]\n{child_strs}"
     else:
-        child_strs = "".join([str_(c, indent=indent + "│     ", depth=depth-1, last=i+1==len(node.children))
+        child_strs = "".join([print_node(c, indent=indent + "│     ", depth=depth-1, last=i+1==len(node.children))
                                             for i,c in enumerate(node.children)])
         return f"{indent}├───[{node.id}: {node.value}]\n{child_strs}"
+
 class Node:
     """A basic implementation of a Node class that will hopefully help in
     debugging. Because it's not infinite, you have to construct the entire graph
