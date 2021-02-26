@@ -142,7 +142,7 @@ graph_4 = Node(0, 0, [
         Node(4, 4, [])
     ]),
 ])
-n2.children = [graph_test_4]
+n2.children = [graph_4]
 graph_4_value           = 4
 graph_4_bfs_id          = 4
 graph_4_ids_id          = 4
