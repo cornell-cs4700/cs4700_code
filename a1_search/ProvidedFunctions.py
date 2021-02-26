@@ -134,6 +134,21 @@ graph_3_ids_sequence    = [
     0, 1, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19
 ]
 
+n2 = Node(2, 2, [])
+graph_4 = Node(0, 0, [
+    Node(1, 1, []),
+    n2,
+    Node(3, 3, [
+        Node(4, 4, [])
+    ]),
+])
+n2.children = [graph_test_4]
+graph_4_value           = 4
+graph_4_bfs_id          = 4
+graph_4_ids_id          = 4
+graph_4_bfs_sequence    = [0, 1, 2, 3, 0, 4]
+graph_4_ids_sequence    = [0, 1, 2, 3, 0, 1, 2, 0, 3, 4]
+
 # We can markedly speed up the get_value() function by preloading data
 x_train, _, y_train, _ = train_test_split(
         np.hstack([load_iris().data, np.ones((150,1))]),
