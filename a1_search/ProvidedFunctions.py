@@ -69,7 +69,7 @@ class Node:
 
     def __str__(self): return print_node(self, root=True)
         
-    def __eq__(self, other): return str_(self) == str(other)
+    def __eq__(self, other): return print_node(self, root=True) == print_node(other, root=True)
     
 graph_1 = Node(0, 0, [
     Node(1, 1, []),
