@@ -147,7 +147,7 @@ graph_4_value           = 4
 graph_4_bfs_id          = 4
 graph_4_ids_id          = 4
 graph_4_bfs_sequence    = [0, 1, 2, 3, 0, 4]
-graph_4_ids_sequence    = [0, 1, 2, 3, 0, 1, 2, 0, 3, 4]
+graph_4_ids_sequence    = [0, 1, 2, 3, 0, 1, 2, 3, 4]
 
 # We can markedly speed up the get_value() function by preloading data
 x_train, _, y_train, _ = train_test_split(
