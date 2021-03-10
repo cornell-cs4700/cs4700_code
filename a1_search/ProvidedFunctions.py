@@ -176,7 +176,7 @@ def get_successor(state, n_successors=10):
     
     grad = w.grad.numpy().reshape(15)
     grad_norm = np.linalg.norm(grad)
-    return [state - grad + (np.random.rand(15) * grad_norm) for _ in range(n_successors)]
+    return [.4 * (state - grad) + .6 * grad_norm * np.random.rand(15) for _ in range(n_successors)]
 
 def get_initial_state():
     """Returns an initial state."""
