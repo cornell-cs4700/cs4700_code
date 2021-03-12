@@ -147,6 +147,51 @@ graph_4_ids_id          = 4
 graph_4_bfs_sequence    = [0, 1, 2, 3, 0, 4]
 graph_4_ids_sequence    = [0, 1, 2, 3, 0, 1, 2, 3, 4]
 
+graph_10 = Node(0, 1, [
+    Node(1, 2, []),
+    Node(2, 3, [
+        Node(3, 4, []),
+        Node(4, 5, [])
+    ]),
+    Node(5, 6, [])
+])
+graph_10_value           = 5
+graph_10_bfs_id          = 4
+graph_10_ids_id          = 4
+graph_10_bfs_sequence    = [0, 1, 2, 5, 3, 4]
+graph_10_ids_sequence    = [0, 1, 2, 5, 0, 1, 2, 3, 4]
+graph_11 = Node(0, 0, [
+    Node(1, 1, []),
+    Node(2, 2, [
+        Node(3, 3, []),
+        Node(4, 4, [])
+    ]),
+    Node(5, 5, [])
+])
+graph_11_value           = 6
+graph_11_bfs_id          = None
+graph_11_ids_id          = None
+graph_11_bfs_sequence    = [0, 1, 2, 5, 3, 4]
+graph_11_ids_sequence    = [0, 1, 2, 5, 0, 1, 2, 3, 4, 5]
+graph_12 = Node(0, 0, [
+    Node(1, 1, [
+        Node(2, 2, [
+            Node(3, 3, [
+                Node(4, 4, [
+                    Node(5, 5, [
+                        Node(6, 6, [])
+                    ])
+                ])
+            ])
+        ])
+    ])
+])
+graph_12_value           = 6
+graph_12_bfs_id          = 6
+graph_12_ids_id          = 6
+graph_12_bfs_sequence    = [0, 1, 2, 3, 4, 5, 6]
+graph_12_ids_sequence    = [0, 1, 0, 1, 2, 0, 1, 2, 3, 0, 1, 2, 3, 4, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 6]
+
 # We can markedly speed up the get_value() function by preloading data
 x_train, _, y_train, _ = train_test_split(
         np.hstack([load_iris().data, np.ones((150,1))]),
