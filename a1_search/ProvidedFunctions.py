@@ -12,7 +12,15 @@ def compare_output_test(test_vals, result):
     pass
 
 def print_node(node, indent="", depth=10, root=False, last=False):
-    """Returns a string representation of [node]."""
+    """Returns a string representation of [node].
+    
+    Args:
+    node    -- the node to print
+    indent  -- the indentation to print on the line of node before the node
+    depth   -- the remaining depth in the tree to print
+    root    -- whether the node is the root or not
+    last    -- whether the node is the last among its siblings
+    """
     if depth == 0 and not last:
         return f"{indent}├───[{node.id}: {node.value}]\n"
     elif depth == 0 and last:
@@ -22,7 +30,7 @@ def print_node(node, indent="", depth=10, root=False, last=False):
                                             for i,c in enumerate(node.children)])
         return f"[{node.id}: {node.value}]\n{child_strs}"
     elif last:
-        child_strs = "".join([print_node(c, indent=indent + "│     ", depth=depth-1, last=i+1==len(node.children))
+        child_strs = "".join([print_node(c, indent=indent + "      ", depth=depth-1, last=i+1==len(node.children))
                                             for i,c in enumerate(node.children)])
         return f"{indent}└───[{node.id}: {node.value}]\n{child_strs}"
     else:
