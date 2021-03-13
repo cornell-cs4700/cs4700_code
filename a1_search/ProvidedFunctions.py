@@ -155,6 +155,36 @@ graph_4_ids_id          = 4
 graph_4_bfs_sequence    = [0, 1, 2, 3, 0, 4]
 graph_4_ids_sequence    = [0, 1, 2, 3, 0, 1, 2, 3, 4]
 
+graph_5 = Node(0, 0, [
+    Node(1, 1, [
+        Node(3, 3, [
+            Node(5, 5, []),
+            Node(6, 6, [])
+        ]),
+        Node(4, 4, [
+            Node(7, 7, []),
+            Node(8, 8, [])
+        ])
+    ]),
+    Node(2, 2, [
+        Node(9, 9, [
+            Node(10, 10, []),
+            Node(11, 11, [])
+        ]),
+        Node(12, 12, [
+            Node(13, 13, []),
+            Node(14, 14, [
+                Node(15, 15, [])
+            ])
+        ])
+    ])
+])
+graph_5_value           = 15
+graph_5_bfs_id          = 15
+graph_5_ids_id          = 15
+graph_5_bfs_sequence    = [0, 1, 2, 3, 4, 9, 12, 5, 6, 7, 8, 10, 11, 13, 14, 15]
+graph_5_ids_sequence    = [0, 1, 2, 0, 1, 3, 4, 2, 9, 12, 0, 1, 3, 5, 6, 4, 7, 8, 2, 9, 10, 11, 12, 13, 14, 0, 1, 3, 5, 6, 4, 7, 8, 2, 9, 10, 11, 12, 13, 14, 15]
+
 graph_10 = Node(0, 1, [
     Node(1, 2, []),
     Node(2, 3, [
